@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>成免费网站-免费建站平台_零成本搭建个人网站</title>
+<meta name="description" content="成免费网站是一个零成本建站主题页，介绍如何通过免费建站工具搭建个人网站，涵盖免费空间、模板选择、域名绑定与上线流程等实用内容。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f6f5c'/%3E%3Cpath d='M18 26h20a8 8 0 0 1 0 16H30' stroke='%23f4e3b2' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='22' cy='46' r='4' fill='%23f4e3b2'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#16302b;
+    --ink-soft:#3d5751;
+    --brand:#1f6f5c;
+    --brand-deep:#14503f;
+    --sand:#f4e3b2;
+    --paper:#fbfaf5;
+    --line:#dde5df;
+    --card:#ffffff;
+    --radius:16px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+    line-height:1.75;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brand-deep);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img,svg{max-width:100%}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+  /* Header */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,250,245,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;color:var(--ink);letter-spacing:.5px}
+  .logo svg{flex:0 0 auto}
+  nav.top{display:flex;align-items:center;gap:22px;font-size:14.5px}
+  nav.top a{color:var(--ink-soft);font-weight:500}
+  nav.top a:hover{color:var(--brand);text-decoration:none}
+  .cta-mini{
+    background:var(--brand);color:#fff;padding:8px 16px;border-radius:999px;font-weight:600;font-size:14px;
+    white-space:nowrap;
+  }
+  .cta-mini:hover{background:var(--brand-deep);text-decoration:none;color:#fff}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:10px;padding:6px 10px;color:var(--ink);font-size:18px;cursor:pointer}
+
+  /* Hero */
+  .hero{
+    background:
+      radial-gradient(1200px 420px at 85% -10%, rgba(31,111,92,.14), transparent 60%),
+      linear-gradient(180deg,#f7f6ee 0%,#fbfaf5 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:64px 0 56px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:#e6efe9;color:var(--brand-deep);
+    border-radius:999px;padding:5px 14px;font-size:13px;font-weight:600;letter-spacing:.3px;
+  }
+  h1{
+    font-size:clamp(30px,4.4vw,46px);
+    line-height:1.22;
+    margin:18px 0 14px;
+    letter-spacing:-.5px;
+    font-weight:850;
+  }
+  h1 .accent{color:var(--brand)}
+  .lede{font-size:17px;color:var(--ink-soft);max-width:34em;margin:0 0 26px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:999px;font-weight:700;font-size:15px;
+    border:1px solid transparent;cursor:pointer;
+  }
+  .btn-primary{background:var(--brand);color:#fff}
+  .btn-primary:hover{background:var(--brand-deep);text-decoration:none;color:#fff}
+  .btn-ghost{background:#fff;color:var(--brand-deep);border-color:#c9d8d0}
+  .btn-ghost:hover{border-color:var(--brand);text-decoration:none}
+  .btn[aria-disabled="true"]{opacity:.75;cursor:default}
+
+  .hero-art{
+    background:var(--card);border:1px solid var(--line);border-radius:24px;
+    padding:18px;box-shadow:0 18px 40px -28px rgba(21,80,63,.45);
+  }
+  .art-window{border-radius:16px;overflow:hidden;background:#f2f7f4;border:1px solid #e3ede7}
+  .art-bar{display:flex;gap:6px;padding:10px 12px;background:#e6efe9}
+  .art-bar span{width:9px;height:9px;border-radius:50%;background:#b7cec2}
+  .art-body{padding:16px 16px 6px}
+  .art-line{height:9px;border-radius:5px;background:#cfdfd6;margin-bottom:9px}
+  .art-line.w60{width:60%}
+  .art-line.w80{width:80%}
+  .art-line.w40{width:40%;background:#e3d9b4}
+  .art-blocks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+  .art-blocks div{height:52px;border-radius:10px;background:#e9f1ec;border:1px dashed #c6dbd1}
+  .art-foot{padding:10px 16px 14px;font-size:12px;color:#7f978d;display:flex;justify-content:space-between}
+  .art-foot b{color:var(--brand);font-weight:700}
+
+  /* Sections */
+  section{padding:64px 0}
+  section.tight{padding:48px 0}
+  .sec-head{max-width:40em;margin-bottom:34px}
+  .sec-head h2{font-size:clamp(22px,2.6vw,30px);margin:0 0 10px;line-height:1.3;letter-spacing:-.3px}
+  .sec-head p{margin:0;color:var(--ink-soft);font-size:15.5px}
+  .kicker{font-size:13px;font-weight:700;letter-spacing:2px;color:var(--brand);text-transform:uppercase;margin-bottom:10px}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 22px;display:flex;flex-direction:column;gap:10px;
+  }
+  .card .ico{
+    width:42px;height:42px;border-radius:12px;background:#e6efe9;display:flex;align-items:center;justify-content:center;
+  }
+  .card h3{margin:0;font-size:17px;line-height:1.4}
+  .card p{margin:0;font-size:14.5px;color:var(--ink-soft)}
+
+  /* Steps */
+  .steps{background:#123a30;color:#eaf3ee;border-radius:24px;padding:44px 36px}
+  .steps .kicker{color:var(--sand)}
+  .steps h2{color:#fff;margin:0 0 12px;font-size:clamp(22px,2.6vw,28px)}
+  .steps > p{color:#bcd3c8;margin:0 0 28px;max-width:44em;font-size:15px}
+  .step-list{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;list-style:none;margin:0;padding:0}
+  .step-list li{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:18px}
+  .step-num{display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--sand);color:#123a30;font-size:13px;font-weight:800;align-items:center;justify-content:center;margin-bottom:10px}
+  .step-list h3{font-size:15px;margin:0 0 6px;color:#fff}
+  .step-list p{font-size:13.5px;margin:0;color:#bcd3c8;line-height:1.6}
+
+  /* Compare table */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card)}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:560px}
+  th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:#f1f6f2;font-weight:700;color:var(--brand-deep);font-size:13.5px;letter-spacing:.4px}
+  tr:last-child td{border-bottom:none}
+  td b{color:var(--brand-deep)}
+
+  /* FAQ */
+  .faq{display:grid;gap:12px}
+  details{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;
+  }
+  details[open]{border-color:#bcd8cc;background:#fdfefc}
+  summary{cursor:pointer;font-weight:700;font-size:15.5px;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";color:var(--brand);font-size:20px;font-weight:600;line-height:1}
+  details[open] summary::after{content:"–"}
+  details p{margin:12px 0 0;font-size:14.5px;color:var(--ink-soft)}
+
+  /* Checklist */
+  .checklist{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;margin:0;padding:0;list-style:none}
+  .checklist li{position:relative;padding-left:30px;font-size:14.5px;color:var(--ink-soft)}
+  .checklist li::before{
+    content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:5px;
+    background:var(--brand);box-shadow:inset 0 0 0 3px #fff;
+  }
+  .checklist li b{color:var(--ink)}
+
+  /* Download block */
+  .dl{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;
+    background:linear-gradient(120deg,#e8f1ea,#f6f1dc);
+    border:1px solid #d6e4da;border-radius:24px;padding:32px 34px;
+  }
+  .dl h2{margin:0 0 8px;font-size:22px}
+  .dl p{margin:0;color:var(--ink-soft);font-size:14.5px;max-width:38em}
+
+  footer.site{background:#123a30;color:#c9dcd2;padding:44px 0 28px;font-size:14px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:28px}
+  footer .brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:16px;margin-bottom:10px}
+  footer p{margin:0;color:#a8c2b6;line-height:1.7}
+  footer h4{color:#fff;font-size:14px;margin:0 0 12px;letter-spacing:.5px}
+  footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+  footer ul a{color:#a8c2b6}
+  footer ul a:hover{color:var(--sand)}
+  .copy{border-top:1px solid rgba(255,255,255,.12);padding-top:18px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;color:#8fac9f;font-size:13px}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:36px;padding:44px 0}
+    .hero-art{order:2}
+    .grid-3{grid-template-columns:1fr 1fr}
+    .step-list{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    nav.top{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;padding:16px 20px;gap:14px}
+    nav.top.open{display:flex}
+    .menu-btn{display:block}
+    .bar .cta-mini{display:none}
+    .grid-3{grid-template-columns:1fr}
+    .step-list{grid-template-columns:1fr}
+    .checklist{grid-template-columns:1fr}
+    .steps{padding:30px 22px}
+    .dl{padding:26px 22px}
+    .foot-grid{grid-template-columns:1fr}
+    section{padding:46px 0}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap bar">
+    <div class="logo">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#1f6f5c"/>
+        <path d="M18 26h20a8 8 0 0 1 0 16H30" stroke="#f4e3b2" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <circle cx="22" cy="46" r="4" fill="#f4e3b2"/>
+      </svg>
+      <span>成免费网站</span>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="展开导航" aria-expanded="false">☰</button>
+    <nav class="top" id="topNav">
+      <a href="#why">免费建站方式</a>
+      <a href="#steps">上线步骤</a>
+      <a href="#compare">方案对比</a>
+      <a href="#faq">常见问题</a>
+      <a class="cta-mini" href="#start">开始搭建</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">零成本 · 个人站点 · 快速上线</span>
+        <h1>成免费网站</h1>
+        <p class="lede">不花服务器费用，也能把一个像样的个人网站做出来。成免费网站聚焦免费建站的真实路径：从选免费托管、套模板、绑定免费二级域名，到内容填充与正式上线，把每一步都落到可执行的层面。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#steps">查看搭建步骤 →</a>
+          <a class="btn btn-ghost" href="#compare">对比免费方案</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-window">
+          <div class="art-bar"><span></span><span></span><span></span></div>
+          <div class="art-body">
+            <div class="art-line w60"></div>
+            <div class="art-line w80"></div>
+            <div class="art-line w40"></div>
+            <div class="art-blocks"><div></div><div></div><div></div><div></div></div>
+          </div>
+          <div class="art-foot"><span>你的免费站点</span><b>已上线</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Why Free</div>
+        <h2>为什么现在做免费网站，比过去更现实</h2>
+        <p>免费建站并不是“凑合用”。托管服务商把静态托管、二级域名和模板系统打包成免费额度，个人主页、作品集和博客完全够用。用成免费网站的思路起步，前期投入主要是时间而不是钱。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f6f5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h10"/></svg>
+          </div>
+          <h3>静态托管额度</h3>
+          <p>多数平台为静态站点提供免费空间与带宽额度，纯 HTML/CSS 页面部署后直接可访问，不必租用云服务器。</p>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f6f5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14 0 18M12 3c-3 3.5-3 14 0 18"/></svg>
+          </div>
+          <h3>免费二级域名</h3>
+          <p>平台会分配形如 名称.平台域名 的二级域名，可直接用于访问与分享；需要独立域名时再单独购买并解析。</p>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f6f5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg>
+          </div>
+          <h3>现成模板体系</h3>
+          <p>主流建站工具提供响应式模板，替换文字与图片即可成型。成免费网站建议先用模板跑通流程，再谈定制。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="steps" class="tight">
+    <div class="wrap">
+      <div class="steps">
+        <div class="kicker">Step by Step</div>
+        <h2>四步做出你的第一个免费站点</h2>
+        <p>下面这条路径适用于个人主页、作品集与轻量博客。每一步都不需要付费工具，做完一步就能看到可见的进展。</p>
+        <ol class="step-list">
+          <li>
+            <span class="step-num">1</span>
+            <h3>确定站点定位</h3>
+            <p>先想清楚网站给谁看：介绍自己、展示作品，还是写文章。定位决定首页需要几个模块。</p>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <h3>选免费托管</h3>
+            <p>挑一个支持静态页面的免费平台，注册账号并新建项目，记下分配到的访问地址。</p>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <h3>套模板写内容</h3>
+            <p>选一套响应式模板，把标题、简介、作品列表换成自己的内容，注意手机端显示。</p>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <h3>部署并检查</h3>
+            <p>上传文件后逐页点开检查链接与图片，确认无误再分享地址。成免费网站的流程到此完成一轮。</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Compare</div>
+        <h2>常见免费建站方案怎么选</h2>
+        <p>不同免费方案的限制差别不小。下表按个人站点的常见需求列出要点，具体额度以各平台当期页面说明为准。</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>方案类型</th><th>适合场景</th><th>主要限制</th><th>上手难度</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><b>静态托管平台</b></td><td>个人主页、作品集、文档页</td><td>无后端能力，需自行准备静态文件</td><td>中等</td></tr>
+            <tr><td><b>在线建站工具</b></td><td>拖拽搭建、快速成型</td><td>免费版常带平台标识，模板数量有限</td><td>低</td></tr>
+            <tr><td><b>开源博客程序</b></td><td>以写作更新为主的站点</td><td>需要一点部署与配置经验</td><td>较高</td></tr>
+            <tr><td><b>代码托管附带页面</b></td><td>开发者展示项目</td><td>配置项偏技术化，需熟悉仓库操作</td><td>较高</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="start" class="tight">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Before Launch</div>
+        <h2>上线前值得逐项确认的清单</h2>
+        <p>免费站点最容易踩的坑，往往不是技术，而是细节遗漏。按下面的清单过一遍，能省下不少返工。</p>
+      </div>
+      <ul class="checklist">
+        <li><b>标题与描述</b>：每页都有独立标题，首页描述能说明站点是做什么的。</li>
+        <li><b>移动端显示</b>：用手机打开一遍，确认导航可点、文字不溢出。</li>
+        <li><b>链接可用</b>：站内锚点与外部链接逐个点开，避免出现死链。</li>
+        <li><b>图片体积</b>：压缩后再上传，免费额度下更不容易拖慢加载。</li>
+        <li><b>访问地址</b>：确认二级域名拼写正确，分享前自己先打开一次。</li>
+        <li><b>内容更新</b>：留一个可持续更新的栏目，站点才不至于上线即停更。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="faq" class="tight">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">FAQ</div>
+        <h2>关于成免费网站的常见疑问</h2>
+        <p>以下问题来自免费建站过程中最常被问到的几类，回答只讲通用做法，不涉及具体平台承诺。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>免费网站真的能长期用吗？</summary>
+          <p>免费额度通常随平台政策调整。稳妥做法是把网站文件保存在本地或代码仓库中，平台变化时可较快迁移到另一家免费托管，内容不丢。</p>
+        </details>
+        <details>
+          <summary>免费二级域名会影响访问吗？</summary>
+          <p>个人展示与分享场景下二级域名完全够用。若用于正式品牌或长期运营，再考虑购买独立域名并绑定，成免费网站建议先跑通内容再升级。</p>
+        </details>
+        <details>
+          <summary>不会写代码能做免费网站吗？</summary>
+          <p>可以。在线建站工具提供可视化编辑，选模板、改文字、换图片即可完成首页。会一点 HTML 则能更自由地调整结构和样式。</p>
+        </details>
+        <details>
+          <summary>免费站点需要备案吗？</summary>
+          <p>这取决于所用托管服务的机房与域名情况，规则并不统一。使用平台分配的二级域名与境外托管时通常不涉及，具体以服务商说明为准。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight">
+    <div class="wrap">
+      <div class="dl">
+        <div>
+          <h2>把这份首页结构带走</h2>
+          <p>本页的栏目组织可直接作为个人站点首页的骨架：首屏定位、免费方式、上线步骤、方案对比与常见问题。下载后替换文字与配色即可使用。</p>
+        </div>
+        <a class="btn btn-primary" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">
+          <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#f4e3b2"/>
+            <path d="M18 26h20a8 8 0 0 1 0 16H30" stroke="#123a30" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <circle cx="22" cy="46" r="4" fill="#123a30"/>
+          </svg>
+          成免费网站
+        </div>
+        <p>围绕零成本建站的主题页，讲清免费托管、模板与上线流程，帮助个人站点顺利起步。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#why">免费建站方式</a></li>
+          <li><a href="#steps">上线步骤</a></li>
+          <li><a href="#compare">方案对比</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>继续阅读</h4>
+        <ul>
+          <li><a href="#start">上线前清单</a></li>
+          <li><a href="#start">开始搭建</a></li>
+          <li><a href="#compare">免费方案选择</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>成免费网站 · 主题首页</span>
+      <span>免费额度与平台规则以各服务商当期说明为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var btn = document.getElementById('menuBtn');
+    var nav = document.getElementById('topNav');
+    if(!btn || !nav) return;
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.addEventListener('click', function(e){
+      if(e.target.tagName === 'A' && window.innerWidth <= 640){
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
