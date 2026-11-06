@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>91网-91网网页版入口_91网热门内容浏览与使用</title>
+<meta name="description" content="91网首页说明：91网网页版入口的打开方式、热门内容分区的浏览顺序、账号与收藏的日常使用，以及访问中常见的加载与显示问题说明。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2318181f'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%23f0562e' stroke-width='4'/%3E%3Cpath d='M27 24l16 8-16 8z' fill='%23f0562e'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#18181f;
+    --ink-2:#2a2a34;
+    --paper:#f6f4f0;
+    --card:#ffffff;
+    --accent:#f0562e;
+    --accent-soft:#fde7df;
+    --muted:#6d6a66;
+    --line:#e4dfd8;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.75;
+    font-size:16px;
+  }
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+
+  /* ---------- header ---------- */
+  .site-header{
+    position:sticky;top:0;z-index:20;
+    background:rgba(246,244,240,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    max-width:1120px;margin:0 auto;padding:12px 20px;
+    display:flex;align-items:center;gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .brand-mark{width:38px;height:38px;flex-shrink:0}
+  .brand-name{
+    font-size:20px;font-weight:800;letter-spacing:.5px;
+    color:var(--ink);white-space:nowrap;
+  }
+  .brand-name em{font-style:normal;color:var(--accent)}
+  .nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+  .nav a{
+    font-size:14.5px;color:var(--ink-2);padding:7px 12px;border-radius:8px;
+    transition:background .18s,color .18s;
+  }
+  .nav a:hover{background:var(--accent-soft);color:var(--accent)}
+  .nav a.cta{
+    background:var(--ink);color:#fff;font-weight:600;
+  }
+  .nav a.cta:hover{background:var(--accent);color:#fff}
+
+  /* ---------- hero ---------- */
+  .hero{
+    max-width:1120px;margin:0 auto;padding:48px 20px 36px;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;
+  }
+  .hero-tag{
+    display:inline-flex;align-items:center;gap:7px;
+    background:var(--accent-soft);color:#b83c1b;
+    font-size:13px;font-weight:600;letter-spacing:.4px;
+    padding:5px 12px;border-radius:999px;margin-bottom:18px;
+  }
+  .hero-tag i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block}
+  h1{
+    font-size:clamp(30px,4.4vw,46px);
+    line-height:1.22;font-weight:800;letter-spacing:-.5px;
+    margin-bottom:16px;
+  }
+  h1 span{color:var(--accent)}
+  .hero-lead{
+    font-size:16.5px;color:var(--ink-2);max-width:34em;margin-bottom:26px;
+  }
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:15px;font-weight:600;padding:11px 22px;border-radius:10px;
+    border:1px solid transparent;cursor:pointer;
+  }
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#d8461f}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--ink-2)}
+  .btn-ghost:hover{border-color:var(--ink-2)}
+  .hero-facts{
+    display:flex;gap:28px;margin-top:30px;padding-top:22px;
+    border-top:1px solid var(--line);flex-wrap:wrap;
+  }
+  .hero-facts div strong{display:block;font-size:20px;font-weight:800;color:var(--ink)}
+  .hero-facts div span{font-size:13px;color:var(--muted)}
+
+  .hero-visual{
+    position:relative;background:var(--ink);border-radius:22px;
+    padding:22px;color:#fff;overflow:hidden;
+  }
+  .hero-visual::after{
+    content:"";position:absolute;width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle,rgba(240,86,46,.5),transparent 70%);
+    right:-70px;bottom:-70px;
+  }
+  .hv-head{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:12.5px;color:#b9b6c2;letter-spacing:.5px;margin-bottom:16px;
+  }
+  .hv-dots{display:flex;gap:5px}
+  .hv-dots i{width:7px;height:7px;border-radius:50%;background:#4b4a57;display:block}
+  .hv-list{display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+  .hv-item{
+    display:flex;align-items:center;gap:12px;
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.09);
+    border-radius:11px;padding:11px 13px;
+  }
+  .hv-item b{
+    width:26px;height:26px;border-radius:7px;flex-shrink:0;
+    background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hv-item span{font-size:13.5px;color:#e8e6ee}
+  .hv-item small{margin-left:auto;font-size:11.5px;color:#8e8b9c;white-space:nowrap}
+
+  /* ---------- sections ---------- */
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  section{padding:44px 0}
+  .sec-head{margin-bottom:26px}
+  .sec-kicker{
+    font-size:13px;font-weight:700;color:var(--accent);
+    letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;
+  }
+  h2{font-size:clamp(22px,2.8vw,29px);font-weight:800;letter-spacing:-.3px;margin-bottom:10px}
+  .sec-desc{font-size:15.5px;color:var(--muted);max-width:42em}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 22px;display:flex;flex-direction:column;
+    transition:border-color .18s,transform .18s;
+  }
+  .card:hover{border-color:#cfc7bc;transform:translateY(-2px)}
+  .card-ico{
+    width:42px;height:42px;border-radius:11px;background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+  }
+  .card h3{font-size:17.5px;font-weight:700;margin-bottom:9px}
+  .card p{font-size:14.5px;color:var(--ink-2);flex:1}
+  .card .more{
+    margin-top:16px;font-size:13.5px;font-weight:600;color:var(--accent);
+    display:inline-flex;align-items:center;gap:5px;
+  }
+
+  /* ---------- flow ---------- */
+  .flow{
+    background:var(--ink);color:#fff;border-radius:22px;
+    padding:40px 34px;margin:44px 0;
+  }
+  .flow .sec-kicker{color:#ff8a68}
+  .flow h2{color:#fff}
+  .flow .sec-desc{color:#a9a6b4}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
+  .step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:18px}
+  .step b{display:block;font-size:12.5px;color:#ff8a68;letter-spacing:1px;margin-bottom:8px}
+  .step strong{display:block;font-size:15.5px;margin-bottom:6px}
+  .step p{font-size:13.5px;color:#a9a6b4;line-height:1.65}
+
+  /* ---------- list article ---------- */
+  .split{display:grid;grid-template-columns:1.4fr 1fr;gap:44px;align-items:start}
+  .prose h3{font-size:18px;font-weight:700;margin:22px 0 8px}
+  .prose h3:first-child{margin-top:0}
+  .prose p{font-size:15.5px;color:var(--ink-2);margin-bottom:12px}
+  .prose ul{list-style:none;margin:10px 0 14px}
+  .prose ul li{
+    position:relative;padding-left:18px;font-size:15px;color:var(--ink-2);margin-bottom:8px;
+  }
+  .prose ul li::before{
+    content:"";position:absolute;left:0;top:.68em;width:6px;height:6px;
+    border-radius:2px;background:var(--accent);
+  }
+  .aside-box{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px;position:sticky;top:80px;
+  }
+  .aside-box h4{font-size:15px;font-weight:700;margin-bottom:14px}
+  .aside-box dl{font-size:14px;color:var(--ink-2)}
+  .aside-box dt{font-weight:600;color:var(--ink);margin-top:12px}
+  .aside-box dt:first-child{margin-top:0}
+  .aside-box dd{color:var(--muted);font-size:13.5px}
+
+  /* ---------- filter ---------- */
+  .filter-bar{
+    display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:20px;
+  }
+  .chip{
+    font-size:13.5px;padding:7px 15px;border-radius:999px;cursor:pointer;
+    background:var(--card);border:1px solid var(--line);color:var(--ink-2);
+    transition:all .16s;font-family:inherit;
+  }
+  .chip:hover{border-color:#cfc7bc}
+  .chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .search-box{margin-left:auto;display:flex;align-items:center;gap:8px;
+    background:var(--card);border:1px solid var(--line);border-radius:10px;padding:7px 12px}
+  .search-box input{
+    border:none;outline:none;background:transparent;font-size:14px;width:170px;
+    font-family:inherit;color:var(--ink);
+  }
+  .search-box input::placeholder{color:#a8a39c}
+  .topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .topic{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;display:flex;flex-direction:column;gap:8px;
+    transition:border-color .16s;
+  }
+  .topic:hover{border-color:#cfc7bc}
+  .topic .t-label{
+    font-size:11.5px;font-weight:700;letter-spacing:.6px;color:var(--accent);
+    background:var(--accent-soft);padding:3px 9px;border-radius:6px;
+    align-self:flex-start;
+  }
+  .topic h3{font-size:16px;font-weight:700;line-height:1.5}
+  .topic p{font-size:13.5px;color:var(--muted)}
+  .empty-tip{font-size:14px;color:var(--muted);padding:20px 0;display:none}
+
+  /* ---------- faq ---------- */
+  .faq{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .faq-item{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 22px;
+  }
+  .faq-item h3{font-size:15.5px;font-weight:700;margin-bottom:8px}
+  .faq-item p{font-size:14.5px;color:var(--ink-2)}
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--ink);color:#c9c6d2;margin-top:20px;padding:40px 0 26px;
+  }
+  .foot-inner{max-width:1120px;margin:0 auto;padding:0 20px}
+  .foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;
+    padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .foot-brand span{font-size:18px;font-weight:800;color:#fff}
+  .foot-brand span em{font-style:normal;color:var(--accent)}
+  .foot-note{font-size:13.5px;color:#8e8b9c;max-width:34em;line-height:1.7}
+  .foot-links{display:flex;gap:44px;flex-wrap:wrap}
+  .foot-col h5{font-size:13px;color:#fff;margin-bottom:10px;letter-spacing:.5px}
+  .foot-col a{display:block;font-size:13.5px;color:#a9a6b4;padding:3px 0}
+  .foot-col a:hover{color:var(--accent)}
+  .foot-bottom{
+    padding-top:18px;display:flex;justify-content:space-between;gap:14px;
+    flex-wrap:wrap;font-size:12.5px;color:#7c798a;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:960px){
+    .hero{grid-template-columns:1fr;gap:32px;padding-top:34px}
+    .hero-visual{order:2}
+    .grid-3,.topic-grid{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .split{grid-template-columns:1fr;gap:28px}
+    .aside-box{position:static}
+    .faq{grid-template-columns:1fr}
+  }
+  @media (max-width:680px){
+    body{font-size:15.5px}
+    .header-inner{gap:12px;padding:10px 16px}
+    .brand-name{font-size:17px}
+    .brand-mark{width:32px;height:32px}
+    .nav{gap:0;width:100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;
+      padding-bottom:2px;-webkit-overflow-scrolling:touch}
+    .nav a{font-size:13.5px;padding:6px 10px;white-space:nowrap}
+    .header-inner{flex-wrap:wrap}
+    .wrap,.hero{padding-left:16px;padding-right:16px}
+    section{padding:32px 0}
+    .grid-3,.topic-grid,.steps{grid-template-columns:1fr}
+    .flow{padding:28px 20px;border-radius:16px;margin:32px 0}
+    .hero-facts{gap:20px}
+    .search-box{margin-left:0;width:100%}
+    .search-box input{width:100%}
+    .foot-links{gap:28px}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#top" aria-label="91网 首页">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#18181f"/>
+        <circle cx="32" cy="32" r="16" fill="none" stroke="#f0562e" stroke-width="4"/>
+        <path d="M27 24l16 8-16 8z" fill="#f0562e"/>
+      </svg>
+      <span class="brand-name">91<em>网</em></span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#entry">网页版入口</a>
+      <a href="#content">内容分区</a>
+      <a href="#howto">使用路径</a>
+      <a href="#faq">常见问题</a>
+      <a class="cta" href="#entry">打开91网</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <span class="hero-tag"><i></i>网页版 · 首页</span>
+      <h1>91网</h1>
+      <p class="hero-lead">91网是一个以内容浏览为主的网页站点。首页把入口、分区与常用操作放在同一页，方便你先看清结构，再决定从哪里开始浏览。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#entry">进入网页版入口
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#content">先看内容分区</a>
+      </div>
+      <div class="hero-facts">
+        <div><strong>3</strong><span>主要浏览分区</span></div>
+        <div><strong>4</strong><span>步完成首次访问</span></div>
+        <div><strong>1</strong><span>页面内统一入口</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hv-head">
+        <span>91网 · 首页结构</span>
+        <span class="hv-dots"><i></i><i></i><i></i></span>
+      </div>
+      <div class="hv-list">
+        <div class="hv-item"><b>1</b><span>网页版入口</span><small>起始</small></div>
+        <div class="hv-item"><b>2</b><span>热门内容分区</span><small>浏览</small></div>
+        <div class="hv-item"><b>3</b><span>收藏与历史</span><small>回访</small></div>
+        <div class="hv-item"><b>4</b><span>访问问题说明</span><small>排查</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTRY CARDS -->
+  <section class="wrap" id="entry">
+    <div class="sec-head">
+      <div class="sec-kicker">Entry</div>
+      <h2>91网网页版入口与基础操作</h2>
+      <p class="sec-desc">进入91网后，先确认页面是否正常加载，再按分区浏览。以下三件事是首次访问最常需要用到的。</p>
+    </div>
+    <div class="grid-3">
+      <article class="card">
+        <div class="card-ico">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#f0562e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.5-1.5"/></svg>
+        </div>
+        <h3>打开网页版</h3>
+        <p>在浏览器地址栏输入91网网址即可进入首页，无需额外插件。页面顶部会显示品牌与导航，说明当前处于正常加载状态。</p>
+        <a class="more" href="#howto">查看访问步骤 →</a>
+      </article>
+      <article class="card">
+        <div class="card-ico">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#f0562e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
+        </div>
+        <h3>熟悉首页分区</h3>
+        <p>91网首页把内容按主题拆成若干分区，每个分区提供标题与一句摘要，先读摘要能更快判断是否继续点开。</p>
+        <a class="more" href="#content">浏览分区列表 →</a>
+      </article>
+      <article class="card">
+        <div class="card-ico">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#f0562e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>记录与回访</h3>
+        <p>浏览器收藏夹是最稳妥的保存方式。把91网加入收藏后，下次可直接从书签打开，不必重新查找地址。</p>
+        <a class="more" href="#faq">了解常见问题 →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <div class="wrap">
+    <div class="flow">
+      <div class="sec-head" style="margin-bottom:0">
+        <div class="sec-kicker">Path</div>
+        <h2>从打开到找到内容的四步</h2>
+        <p class="sec-desc">这套顺序适用于大多数首次访问91网的用户，按步骤走可以减少无效点击。</p>
+      </div>
+      <div class="steps">
+        <div class="step"><b>STEP 01</b><strong>打开首页</strong><p>访问91网网页版，确认导航与页面底部信息完整显示。</p></div>
+        <div class="step"><b>STEP 02</b><strong>选择分区</strong><p>按兴趣从顶部导航或首页分区中挑一个方向进入。</p></div>
+        <div class="step"><b>STEP 03</b><strong>阅读条目</strong><p>先看条目标题与摘要，再决定是否展开完整内容。</p></div>
+        <div class="step"><b>STEP 04</b><strong>保存入口</strong><p>把91网加入书签，下次访问可跳过查找环节。</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <section class="wrap" id="content">
+    <div class="sec-head">
+      <div class="sec-kicker">Content</div>
+      <h2>91网内容分区怎么挑</h2>
+      <p class="sec-desc">分区只是浏览的起点。下面的筛选可以帮你按类型缩小范围，搜索框会即时过滤标题与摘要中的文字。</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="chip active" data-cat="all" type="button">全部</button>
+      <button class="chip" data-cat="guide" type="button">入门</button>
+      <button class="chip" data-cat="topic" type="button">主题</button>
+      <button class="chip" data-cat="tool" type="button">工具</button>
+      <div class="search-box">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a8a39c" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <input id="topicSearch" type="search" placeholder="搜索分区标题" aria-label="搜索内容分区">
+      </div>
+    </div>
+
+    <div class="topic-grid" id="topicGrid">
+      <article class="topic" data-cat="guide" data-text="网页版入口 首次访问 打开方式">
+        <span class="t-label">入门</span>
+        <h3>网页版入口说明</h3>
+        <p>讲清91网网页版从地址到首页的完整过程，以及加载异常时的初步判断。</p>
+      </article>
+      <article class="topic" data-cat="topic" data-text="热门内容 分区浏览 摘要">
+        <span class="t-label">主题</span>
+        <h3>热门内容分区</h3>
+        <p>按主题归类的内容集合，每条附一句摘要，适合先扫读再深入。</p>
+      </article>
+      <article class="topic" data-cat="tool" data-text="收藏 历史 书签 回访">
+        <span class="t-label">工具</span>
+        <h3>收藏与历史记录</h3>
+        <p>用浏览器书签与历史功能保存91网入口，减少重复查找的时间。</p>
+      </article>
+      <article class="topic" data-cat="guide" data-text="移动端 小屏 阅读 排版">
+        <span class="t-label">入门</span>
+        <h3>手机端浏览要点</h3>
+        <p>小屏下导航可横向滑动，正文字号与行距已适配单手阅读。</p>
+      </article>
+      <article class="topic" data-cat="topic" data-text="内容更新 频率 状态">
+        <span class="t-label">主题</span>
+        <h3>内容更新与状态</h3>
+        <p>分区内容会持续补充，具体更新节奏以页面实际显示为准。</p>
+      </article>
+      <article class="topic" data-cat="tool" data-text="加载 显示 排查 网络">
+        <span class="t-label">工具</span>
+        <h3>加载与显示排查</h3>
+        <p>页面空白或样式错乱时，先刷新，再检查网络与浏览器缓存。</p>
+      </article>
+    </div>
+    <p class="empty-tip" id="emptyTip">没有匹配的分区，换个关键词试试。</p>
+  </section>
+
+  <!-- ARTICLE -->
+  <section class="wrap" id="howto">
+    <div class="split">
+      <div class="prose">
+        <div class="sec-head" style="margin-bottom:16px">
+          <div class="sec-kicker">Reading</div>
+          <h2>在91网浏览内容时的几个习惯</h2>
+        </div>
+        <h3>先读摘要，再决定是否展开</h3>
+        <p>91网的条目通常配有标题和一句摘要。摘要的作用是让你在两三秒内判断这条内容是否值得继续，而不是替代正文。养成先读摘要的习惯，能明显减少来回跳转。</p>
+        <h3>用分区而不是搜索起步</h3>
+        <p>刚接触91网时，分区比关键词搜索更容易建立整体印象。先走一遍主要分区，知道每块大致放什么，之后再遇到具体需求，搜索会更有方向。</p>
+        <h3>把稳定入口固定下来</h3>
+        <p>网页站点的地址可能因网络环境出现差异。把能正常打开的91网地址加入书签，并保留一个备用记录，是比较稳妥的做法。</p>
+        <ul>
+          <li>收藏夹命名统一，例如「91网-网页版」，便于识别。</li>
+          <li>不同设备分别保存，手机与电脑互不影响。</li>
+          <li>定期清理失效书签，避免误点。</li>
+        </ul>
+        <h3>遇到异常先做基础排查</h3>
+        <p>页面打不开时，依次检查网络连接、刷新页面、清理缓存、更换浏览器。多数显示问题属于本地环境原因，按顺序排查通常能定位。</p>
+      </div>
+
+      <aside class="aside-box">
+        <h4>页面速览</h4>
+        <dl>
+          <dt>站点类型</dt>
+          <dd>内容浏览型网页站点</dd>
+          <dt>主要入口</dt>
+          <dd>网页版首页</dd>
+          <dt>浏览方式</dt>
+          <dd>分区浏览 + 关键词搜索</dd>
+          <dt>适配设备</dt>
+          <dd>桌面浏览器与移动端浏览器</dd>
+          <dt>保存方式</dt>
+          <dd>浏览器书签</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="wrap" id="faq">
+    <div class="sec-head">
+      <div class="sec-kicker">FAQ</div>
+      <h2>访问91网常见问题</h2>
+      <p class="sec-desc">下列问题覆盖首次访问与日常回访中最常见的几类情况。</p>
+    </div>
+    <div class="faq">
+      <div class="faq-item">
+        <h3>91网需要注册才能浏览吗？</h3>
+        <p>首页与分区内容可直接浏览。是否需要账号取决于具体功能，页面会在相应位置给出提示，以实际显示为准。</p>
+      </div>
+      <div class="faq-item">
+        <h3>页面空白或样式错乱怎么办？</h3>
+        <p>先刷新一次；仍不正常时检查网络，清理浏览器缓存，或换一个浏览器重试。多数情况由本地缓存引起。</p>
+      </div>
+      <div class="faq-item">
+        <h3>手机上排版会很挤吗？</h3>
+        <p>页面已针对小屏调整，导航可横向滑动，正文行距与字号适配单手阅读，卡片改为单列排列。</p>
+      </div>
+      <div class="faq-item">
+        <h3>如何快速回到91网首页？</h3>
+        <p>点击页头品牌区域即可回到本页顶部；日常回访建议直接使用浏览器书签打开。</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">
+          <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#2a2a34"/>
+            <circle cx="32" cy="32" r="16" fill="none" stroke="#f0562e" stroke-width="4"/>
+            <path d="M27 24l16 8-16 8z" fill="#f0562e"/>
+          </svg>
+          <span>91<em>网</em></span>
+        </div>
+        <p class="foot-note">91网首页说明：整理网页版入口、内容分区与常见访问问题的信息，帮助访客更快找到需要的部分。</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h5>页面导航</h5>
+          <a href="#entry">网页版入口</a>
+          <a href="#content">内容分区</a>
+          <a href="#howto">使用路径</a>
+          <a href="#faq">常见问题</a>
+        </div>
+        <div class="foot-col">
+          <h5>常用说明</h5>
+          <a href="#content">分区筛选</a>
+          <a href="#howto">浏览习惯</a>
+          <a href="#faq">加载排查</a>
+          <a href="#top">返回顶部</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 91网 首页 · 页面内容以实际显示为准</span>
+      <span>本站为单一页面说明，所有链接指向本页对应区块</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var chips = document.querySelectorAll('.chip');
+    var items = document.querySelectorAll('#topicGrid .topic');
+    var input = document.getElementById('topicSearch');
+    var empty = document.getElementById('emptyTip');
+    var activeCat = 'all';
+
+    function apply(){
+      var kw = (input.value || '').trim().toLowerCase();
+      var shown = 0;
+      items.forEach(function(el){
+        var okCat = activeCat === 'all' || el.dataset.cat === activeCat;
+        var text = (el.dataset.text + ' ' + el.textContent).toLowerCase();
+        var okKw = !kw || text.indexOf(kw) !== -1;
+        var show = okCat && okKw;
+        el.style.display = show ? '' : 'none';
+        if(show) shown++;
+      });
+      empty.style.display = shown ? 'none' : 'block';
+    }
+
+    chips.forEach(function(c){
+      c.addEventListener('click', function(){
+        chips.forEach(function(x){ x.classList.remove('active'); });
+        c.classList.add('active');
+        activeCat = c.dataset.cat;
+        apply();
+      });
+    });
+    input.addEventListener('input', apply);
+    apply();
+  })();
+</script>
+
+</body>
+  </html>
